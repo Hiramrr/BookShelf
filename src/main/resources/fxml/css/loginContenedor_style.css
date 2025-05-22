@@ -1,0 +1,18 @@
+.panel_arriba{
+    -fx-background-color: #00694BFF;
+}
+
+.registerButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5px;
+}
+
+.registerButton:hover {
+    -fx-background-color: #45a049;
+}
+
+.registerButton:pressed {
+    -fx-background-color: #3e8e41;
+}

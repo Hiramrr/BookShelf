@@ -1,0 +1,19 @@
+.buttonEntrar{
+    -fx-background-color: #00694b;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Euclid Circular A";
+    -fx-font-weight: bold;
+}
+
+.buttonEntrar:hover {
+    -fx-background-color: #00563d;
+}
+
+.buttonEntrar:pressed {
+    -fx-background-color: #004a34;
+}
+
+.pane{
+    -fx-background-color: white;
+}
