@@ -1,3 +1,18 @@
-boton{
+.panel_arriba{
+    -fx-background-color: #00694BFF;
+}
 
+.Button {
+    -fx-background-color: #00694BFF;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5px;
+}
+
+.Button:hover {
+    -fx-background-color: #00563d;
+}
+
+.Button:pressed {
+    -fx-background-color: #004a34;
 }

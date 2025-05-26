@@ -125,3 +125,6 @@ FROM Prestamos p
 WHERE p.estado = 'Entregado';
 
 SELECT * FROM Usuarios;
+
+SELECT l.titulo, l.autor
+FROM Libros l;

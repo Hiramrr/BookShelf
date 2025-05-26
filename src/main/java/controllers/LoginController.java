@@ -5,11 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
     BaseDatosOracle conexion;
@@ -36,17 +39,17 @@ public class LoginController {
 
     @FXML
     void handleLogin(ActionEvent event) {
-        CorreoUser = correo.getText();
-        ContraseñaUser = contraseña.getText();
-        if(!estaLleno(CorreoUser,ContraseñaUser)){
-            return;
+        String correoUser = correo.getText();
+        String contraseñaUser = contraseña.getText();
+
+        if (estaLleno(correoUser, contraseñaUser)) {
+            Usuario usuario = conexion.consultarUsuario(correoUser, contraseñaUser);
+            if (usuario != null) {
+                cargarPrincipal(usuario);
+            } else {
+                mensajeError("Error de inicio de sesión", "Correo o contraseña incorrectos");
+            }
         }
-        System.out.println(CorreoUser + ContraseñaUser);
-        if(!conexion.consultarUsuario(CorreoUser, ContraseñaUser)){
-            mensajeError("Credenciales invalidas", "Algo no es correcto");
-            return;
-        }
-        mensajeBueno("Se inicio sesion de forma correcta", "Bienvenido de vuelta");
     }
 
     boolean estaLleno(String CorreoUser, String ContraseñaUser){
@@ -79,5 +82,23 @@ public class LoginController {
         alerta.setContentText(mensaje);
         alerta.setHeaderText(null);
         alerta.showAndWait();
+    }
+
+    void cargarPrincipal(Usuario usuario) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/principal_contenedor.fxml"));
+            Parent pane = loader.load();
+            PrincipalContenedorController controller = loader.getController();
+            controller.setUsuario(usuario);
+            
+            Stage stage = new Stage();
+            stage.setTitle("BookShelf");
+            stage.setScene(new Scene(pane));
+            Stage currentStage = (Stage) iniciar.getScene().getWindow();
+            currentStage.close();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

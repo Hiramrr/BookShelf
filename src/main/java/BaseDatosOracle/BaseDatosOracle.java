@@ -1,6 +1,12 @@
 package BaseDatosOracle;
 
+import controllers.Categoria;
+import controllers.Libro;
+import controllers.Usuario;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseDatosOracle {
     private static final String URL = "jdbc:oracle:thin:@localhost:1521/FREEPDB1";
@@ -20,20 +26,25 @@ public class BaseDatosOracle {
         return con;
     }
 
-    public boolean consultarUsuario(String correo, String contraseña) {
-        String query = "SELECT CORREO, CONTRASEÑA FROM USUARIOS WHERE CORREO = ? AND CONTRASEÑA = ?";
+    public Usuario consultarUsuario(String correo, String contraseña) {
+        String query = "SELECT * FROM USUARIOS WHERE CORREO = ? AND CONTRASEÑA = ?";
         try (PreparedStatement statement = con.prepareStatement(query)) {
             statement.setString(1, correo);
             statement.setString(2, contraseña);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    return true;
+                if (resultSet.next()) {
+                    return new Usuario(
+                        resultSet.getInt("ID"),
+                        resultSet.getString("NOMBRE"),
+                        resultSet.getString("CORREO"),
+                        resultSet.getString("CONTRASEÑA")
+                    );
                 }
             }
         } catch (SQLException e) {
             System.err.println("Error al realizar la consulta: " + e.getMessage());
         }
-        return false;
+        return null;
     }
 
     public boolean registroUsuario(int id, String nombre, String correo, String contraseña){
@@ -49,5 +60,36 @@ public class BaseDatosOracle {
             System.out.println("Algo salio mal nooo");
         }
        return false;
+    }
+
+    public List<Libro> obtener_libros(){
+        List<Libro> libros = new ArrayList<Libro>();
+        List<Categoria> categorias = new ArrayList<>();
+        String query = "SELECT * FROM TodosLibros";
+
+
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                int ID = rs.getInt("ID");
+                String TITULO = rs.getString("TITULO");
+                String AUTOR = rs.getString("AUTOR");
+                String EDITORIAL = rs.getString("EDITORIAL");
+                int NUM_COPIAS = rs.getInt("NUM_COPIAS");
+                String SINOPSIS = rs.getString("SINOPSIS");
+                String TEMP = rs.getString("CATEGORIAS");
+                String[] categoriasArray = TEMP.split(",");
+                for (String categoria : categoriasArray) {
+                    categorias.add(new Categoria(categoria.trim()));
+                }
+
+                Libro libro = new Libro(ID, TITULO, AUTOR, EDITORIAL, NUM_COPIAS, SINOPSIS, categorias);
+                libros.add(libro);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return libros;
     }
 }

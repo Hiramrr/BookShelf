@@ -6,19 +6,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PrincipalContenedorController">
    <children>
-      <Pane layoutY="-1.0" prefHeight="46.0" prefWidth="735.0">
+      <Pane prefHeight="46.0" prefWidth="735.0" styleClass="panel_arriba" stylesheets="@css/contenedor_principal.css">
          <children>
             <HBox prefHeight="46.0" prefWidth="735.0">
                <children>
-                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleHacerUnaVenta" prefHeight="43.0" prefWidth="128.0" text="Principal" />
-                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleHacerUnaVenta" prefHeight="43.0" prefWidth="128.0" text="Subir libro" />
-                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleHacerUnaVenta" prefHeight="43.0" prefWidth="128.0" text="Editar Libro" />
-                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleHacerUnaVenta" prefHeight="43.0" prefWidth="128.0" text="Eliminar Libro" />
-                  <Pane prefHeight="46.0" prefWidth="157.0" />
-                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleHacerUnaVenta" prefHeight="43.0" prefWidth="128.0" text="Cuenta" />
+                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handlePrincipal" prefHeight="43.0" prefWidth="101.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Principal" />
+                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleSubirLibro" prefHeight="43.0" prefWidth="118.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Subir libro" />
+                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleEditarLibro" prefHeight="43.0" prefWidth="117.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Editar Libro" />
+                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleEliminarLibro" prefHeight="43.0" prefWidth="121.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Eliminar Libro" />
+                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleUsuarios" prefHeight="43.0" prefWidth="101.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Usuarios" />
+                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handlePrestamo" prefHeight="43.0" prefWidth="117.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Prestamos" />
+                  <Pane prefHeight="46.0" prefWidth="49.0" />
+                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleCuenta" prefHeight="43.0" prefWidth="107.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Cuenta" />
                   <Pane prefHeight="46.0" prefWidth="81.0">
                      <children>
                         <Pane layoutX="14.0" layoutY="7.0" prefHeight="33.0" prefWidth="33.0">
@@ -32,6 +33,6 @@
             </HBox>
          </children>
       </Pane>
-      <Pane layoutY="44.0" prefHeight="477.0" prefWidth="738.0" />
+      <Pane fx:id="contenedor" layoutY="46.0" prefHeight="475.0" prefWidth="738.0" />
    </children>
 </AnchorPane>

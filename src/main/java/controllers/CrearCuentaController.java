@@ -30,6 +30,11 @@ public class CrearCuentaController {
         conexion.conectar();
     }
 
+    private boolean esCorreoValido(String correo) {
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        return correo.matches(regex);
+    }
+
     @FXML
     void handleCrearCuenta(ActionEvent event) {
         int id = generarID();
@@ -37,23 +42,45 @@ public class CrearCuentaController {
         String correoUser = correo.getText();
         String contraseñaUser = contraseña.getText();
 
-        conexion.registroUsuario(id,nombreUser,correoUser,contraseñaUser);
+        if (!estaLleno(nombreUser, correoUser, contraseñaUser)) {
+            return;
+        }
+
+        if (!esCorreoValido(correoUser)) {
+            mensajeError("Correo inválido", "Por favor introduce un correo electrónico válido");
+            return;
+        }
+
+        try {
+            conexion.registroUsuario(id, nombreUser, correoUser, contraseñaUser);
+            mensajeBueno("Cuenta creada", "¡Tu cuenta ha sido creada exitosamente!");
+            limpiarCampos();
+        } catch (Exception e) {
+            mensajeError("Error", "No se pudo crear la cuenta. Por favor intenta nuevamente.");
+        }
     }
 
-    boolean estaLleno(String nombreUser,String CorreoUser, String ContraseñaUser){
+    private void limpiarCampos() {
+        usuario.setText("");
+        correo.setText("");
+        contraseña.setText("");
+    }
+
+    boolean estaLleno(String nombreUser, String CorreoUser, String ContraseñaUser) {
         if(nombreUser.equals("") && CorreoUser.equals("") && ContraseñaUser.equals("")){
             mensajeError("Por favor llena todos los campos", "Por favor llena todos los campos");
             return false;
         }
-        else if(nombreUser.equals("")){
+
+        if(nombreUser.equals("")){
             mensajeError("Por favor introduce tu nombre", "Por favor introduce tu nombre");
             return false;
         }
-        else if(CorreoUser.equals("")){
+        if(CorreoUser.equals("")){
             mensajeError("Por favor introduce el correo", "Por favor introduce tu correo");
             return false;
         }
-        else if(ContraseñaUser.equals("")){
+        if(ContraseñaUser.equals("")){
             mensajeError("Por favor introduce la contraseña", "Por favor introduce tu contraseña");
             return false;
         }
