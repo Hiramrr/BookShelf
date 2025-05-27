@@ -3,6 +3,8 @@ package BaseDatosOracle;
 import controllers.Categoria;
 import controllers.Libro;
 import controllers.Usuario;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class BaseDatosOracle {
         }
         return con;
     }
-
+    
     public Usuario consultarUsuario(String correo, String contraseña) {
         String query = "SELECT * FROM USUARIOS WHERE CORREO = ? AND CONTRASEÑA = ?";
         try (PreparedStatement statement = con.prepareStatement(query)) {
@@ -91,5 +93,42 @@ public class BaseDatosOracle {
             e.printStackTrace();
         }
         return libros;
+    }
+
+    public ObservableList<Categoria> obtenerCategorias(){
+        ObservableList<Categoria> categorias = FXCollections.observableArrayList();
+        String query = "SELECT DISTINCT c.nombre FROM Libros l, TABLE(l.categorias) c";
+
+
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                Categoria categoria = new Categoria(rs.getString("NOMBRE"));
+                categorias.add(categoria);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categorias;
+    }
+
+    public boolean subirLibro(int id, String titulo, String autor, String editorial, int numCopias, String sinopsis, String categoriasSQL) {
+        String query = "INSERT INTO Libros VALUES (Libro_t(?, ?, ?, ?, ?, ?, " + categoriasSQL + "))";
+        
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, id);
+            stmt.setString(2, titulo);
+            stmt.setString(3, autor);
+            stmt.setString(4, editorial);
+            stmt.setInt(5, numCopias);
+            stmt.setString(6, sinopsis);
+            
+            int filasAfectadas = stmt.executeUpdate();
+            return filasAfectadas > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al subir el libro: " + e.getMessage());
+            return false;
+        }
     }
 }

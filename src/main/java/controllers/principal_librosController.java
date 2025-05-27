@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -88,7 +89,14 @@ public class principal_librosController {
     }
 
     private void mostrarDetallesLibro(Libro libro) {
-        
+        System.out.println(libro.getId());
+        System.out.println(libro.getTitulo());
+        System.out.println(libro.getAutor());
+        List<Categoria> categoria = new ArrayList<>(libro.getCategoria());
+        System.out.println(categoria.get(0).getNombre());
+        System.out.println(libro.getEditorial());
+        System.out.println(libro.getNum_copias());
+        System.out.println(libro.getSinopsis_());
     }
 
     private void mostrarMensajeError(String titulo, String mensaje) {

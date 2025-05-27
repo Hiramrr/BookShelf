@@ -11,17 +11,17 @@
    <children>
       <Text fill="#00694b" layoutX="317.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro" textAlignment="CENTER" wrappingWidth="297.3499450683594">
          <font>
-            <Font name="EuclidCircularA-Regular" size="46.0" />
+            <Font size="46.0" />
          </font>
       </Text>
       <Text fill="#1c2d38" layoutX="327.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo">
          <font>
-            <Font name="EuclidCircularA-Regular" size="19.0" />
+            <Font size="19.0" />
          </font>
       </Text>
       <Text fill="#1c2d38" layoutX="325.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
          <font>
-            <Font name="EuclidCircularA-Regular" size="19.0" />
+            <Font size="19.0" />
          </font>
       </Text>
       <PasswordField fx:id="contraseña" layoutX="324.0" layoutY="372.0" prefHeight="26.0" prefWidth="279.0" promptText="Contraseña">
@@ -36,12 +36,12 @@
       </TextField>
       <Button fx:id="crear" layoutX="398.0" layoutY="441.0" mnemonicParsing="false" onAction="#handleCrearCuenta" prefHeight="40.0" prefWidth="131.0" styleClass="buttonEntrar" stylesheets="@css/login_style.css" text="Crear cuenta">
          <font>
-            <Font name="EuclidCircularA-SemiBold" size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Button>
       <Text fill="#1c2d38" layoutX="324.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
          <font>
-            <Font name="EuclidCircularA-Regular" size="19.0" />
+            <Font size="19.0" />
          </font>
       </Text>
       <TextField fx:id="usuario" layoutX="324.0" layoutY="178.0" prefHeight="26.0" prefWidth="279.0" promptText="Usuario">

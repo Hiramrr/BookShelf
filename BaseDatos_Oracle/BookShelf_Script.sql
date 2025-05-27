@@ -128,3 +128,18 @@ SELECT * FROM Usuarios;
 
 SELECT l.titulo, l.autor
 FROM Libros l;
+
+CREATE OR REPLACE VIEW TodosLibros AS
+SELECT l.id, l.titulo, l.autor, l.editorial, l.num_copias, l.sinopsis,
+  LISTAGG(c.nombre, ', ') AS categorias
+FROM Libros l,
+     TABLE(l.categorias) c
+GROUP BY l.id, l.titulo, l.autor, l.editorial, l.num_copias, l.sinopsis;
+
+SELECT * FROM TodosLibros;
+
+DROP VIEW TodosLibros;
+
+SELECT DISTINCT c.nombre
+FROM Libros l,
+TABLE(l.categorias) c;

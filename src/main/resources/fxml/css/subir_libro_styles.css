@@ -1,0 +1,32 @@
+.panel_imagen{
+    -fx-background-color: #e5e3e3;
+}
+
+.buttonAgregar{
+    -fx-background-color: #00694b;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.buttonAgregar:hover {
+    -fx-background-color: #00563d;
+}
+
+.buttonAgregar:pressed {
+    -fx-background-color: #004a34;
+}
+.buttonImagen {
+    -fx-background-color: #004a8d;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.buttonImagen:hover {
+    -fx-background-color: #003a75;
+}
+
+.buttonImagen:pressed {
+    -fx-background-color: #002f5e;
+}

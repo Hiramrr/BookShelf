@@ -49,7 +49,16 @@ public class PrincipalContenedorController {
 
     @FXML
     void handleEditarLibro(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editar_libro.fxml"));
+            Parent root = loader.load();
+            editarLibroController controller = loader.getController();
+            controller.setUsuario(usuarioActual);
+            contenedor.getChildren().clear();
+            contenedor.getChildren().add(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -64,12 +73,30 @@ public class PrincipalContenedorController {
 
     @FXML
     void handlePrincipal(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/principal_libros.fxml"));
+            Parent root = loader.load();
+            principal_librosController controller = loader.getController();
+            controller.setUsuario(usuarioActual);
+            contenedor.getChildren().clear();
+            contenedor.getChildren().add(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void handleSubirLibro(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/subir_libro.fxml"));
+            Parent root = loader.load();
+            subirLibroController controller = loader.getController();
+            controller.setUsuario(usuarioActual);
+            contenedor.getChildren().clear();
+            contenedor.getChildren().add(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

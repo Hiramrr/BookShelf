@@ -24,7 +24,7 @@
             </ImageView>
             <Text fill="WHITE" layoutX="140.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BookShelf" wrappingWidth="233.9482421875">
                <font>
-                  <Font name="EuclidCircularA-Regular" size="46.0" />
+                  <Font size="46.0" />
                </font>
             </Text>
          </children>

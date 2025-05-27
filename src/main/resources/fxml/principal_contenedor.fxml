@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PrincipalContenedorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PrincipalContenedorController">
    <children>
       <Pane prefHeight="46.0" prefWidth="735.0" styleClass="panel_arriba" stylesheets="@css/contenedor_principal.css">
          <children>
@@ -33,6 +33,6 @@
             </HBox>
          </children>
       </Pane>
-      <Pane fx:id="contenedor" layoutY="46.0" prefHeight="475.0" prefWidth="738.0" />
+      <Pane fx:id="contenedor" layoutY="46.0" prefHeight="541.0" prefWidth="738.0" />
    </children>
 </AnchorPane>
