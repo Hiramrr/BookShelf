@@ -10,7 +10,7 @@ public class Libro {
     int num_copias;
     String sinopsis_;
     List<Categoria> categoria;
-
+    String urlImagen;
 
     public Libro(int id, String titulo, String autor, String editorial, int num_copias, String sinopsis_, List<Categoria> categoria) {
         this.id = id;
@@ -20,6 +20,7 @@ public class Libro {
         this.num_copias = num_copias;
         this.sinopsis_ = sinopsis_;
         this.categoria = categoria;
+        this.urlImagen = "images/libros/default.png";
     }
 
     public int getId() {
@@ -76,5 +77,13 @@ public class Libro {
 
     public void setCategoria(List<Categoria> categoria) {
         this.categoria = categoria;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 }

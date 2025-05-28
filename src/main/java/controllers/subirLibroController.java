@@ -1,5 +1,6 @@
 package controllers;
 
+import BaseDatosMongo.BaseDatosMongo;
 import BaseDatosOracle.BaseDatosOracle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,10 +18,15 @@ import javafx.scene.control.Alert.AlertType;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class subirLibroController {
 
-    BaseDatosOracle conexion;
+    BaseDatosOracle conexionOracle;
+
+    BaseDatosMongo conexionMongo;
 
     @FXML
     private TextField autor;
@@ -57,14 +63,20 @@ public class subirLibroController {
 
     private Usuario usuarioActual;
 
+    private File selectedImageFile;
+    private static final String portadas_url = "src/main/resources/images/libros/";
+
     public void setUsuario(Usuario usuario) {
             this.usuarioActual = usuario;
     }
 
     @FXML
     public void initialize() {
-        conexion = new BaseDatosOracle();
-        conexion.conectar();
+        conexionOracle = new BaseDatosOracle();
+        conexionOracle.conectar();
+
+        conexionMongo = new BaseDatosMongo();
+
         cargarCategorias();
     }
 
@@ -75,13 +87,14 @@ public class subirLibroController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Imágenes", "*.jpg", "*.jpeg", "*.png"));
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
+            selectedImageFile = file;
             Image image = new Image(file.toURI().toString());
             imageView.setImage(image);
         }
     }
 
     public void cargarCategorias(){
-        ObservableList<Categoria> categorias = conexion.obtenerCategorias();
+        ObservableList<Categoria> categorias = conexionOracle.obtenerCategorias();
 
         categoria2.getItems().add("Ninguna");
         categoria3.getItems().add("Ninguna");
@@ -93,6 +106,32 @@ public class subirLibroController {
 
         categoria2.setValue("Ninguna");
         categoria3.setValue("Ninguna");
+    }
+
+    private String guardarImagen(int libroId) {
+        if (selectedImageFile == null) {
+            return null;
+        }
+
+        try {
+            File directory = new File(portadas_url);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            String extension = selectedImageFile.getName().substring(selectedImageFile.getName().lastIndexOf("."));
+            
+            String nombreArchivo = "libro_" + libroId + extension;
+            File destFile = new File(directory, nombreArchivo);
+
+            Files.copy(selectedImageFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            String rutaFinal = "images/libros/" + nombreArchivo;
+
+            return rutaFinal;
+        } catch (IOException e) {
+            System.err.println("Error al guardar la imagen: " + e.getMessage());
+            return null;
+        }
     }
 
     @FXML
@@ -140,11 +179,28 @@ public class subirLibroController {
 
             int libroId = Integer.parseInt(id.getText());
             int numCopias = Integer.parseInt(cantidad.getText());
+
+            String imagePath = guardarImagen(libroId);
+            if (imagePath == null) {
+                imagePath = "images/libros/default.png";
+            }
             
-            boolean exito = conexion.subirLibro(libroId, nombre.getText(), autor.getText(), editorial.getText(), numCopias, sinopsis.getText(), categoriasSQL.toString());
-            if (exito) {
+            boolean exitoOracle = conexionOracle.subirLibro(
+                libroId,
+                nombre.getText(),
+                autor.getText(),
+                editorial.getText(),
+                numCopias,
+                sinopsis.getText(),
+                categoriasSQL.toString()
+            );
+
+            boolean exitoMongo = conexionMongo.guardarDireccionImagen("imagenes-libro", imagePath, libroId);
+            
+            if (exitoOracle && exitoMongo) {
                 mostrarAlerta("Éxito", "Libro agregado correctamente", AlertType.INFORMATION);
                 limpiarCampos();
+                selectedImageFile = null;
             } else {
                 mostrarAlerta("Error", "No se pudo agregar el libro", AlertType.ERROR);
             }

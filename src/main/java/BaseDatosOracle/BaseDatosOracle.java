@@ -3,6 +3,7 @@ package BaseDatosOracle;
 import controllers.Categoria;
 import controllers.Libro;
 import controllers.Usuario;
+import BaseDatosMongo.BaseDatosMongo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -16,6 +17,7 @@ public class BaseDatosOracle {
     private static final String CONTRASEÑA = "biblioteca123";
 
     private static Connection con;
+    private BaseDatosMongo conexionMongo;
 
 
     public Connection conectar() {
@@ -66,14 +68,18 @@ public class BaseDatosOracle {
 
     public List<Libro> obtener_libros(){
         List<Libro> libros = new ArrayList<Libro>();
-        List<Categoria> categorias = new ArrayList<>();
+
         String query = "SELECT * FROM TodosLibros";
 
+        if (conexionMongo == null) {
+            conexionMongo = new BaseDatosMongo();
+        }
 
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
+                List<Categoria> categorias = new ArrayList<>();
                 int ID = rs.getInt("ID");
                 String TITULO = rs.getString("TITULO");
                 String AUTOR = rs.getString("AUTOR");
@@ -82,11 +88,14 @@ public class BaseDatosOracle {
                 String SINOPSIS = rs.getString("SINOPSIS");
                 String TEMP = rs.getString("CATEGORIAS");
                 String[] categoriasArray = TEMP.split(",");
+                categorias.clear();
                 for (String categoria : categoriasArray) {
                     categorias.add(new Categoria(categoria.trim()));
                 }
 
                 Libro libro = new Libro(ID, TITULO, AUTOR, EDITORIAL, NUM_COPIAS, SINOPSIS, categorias);
+                String urlImagen = conexionMongo.obtenerUrlImagen("imagenes-libro", ID);
+                libro.setUrlImagen(urlImagen);
                 libros.add(libro);
             }
         } catch (SQLException e) {

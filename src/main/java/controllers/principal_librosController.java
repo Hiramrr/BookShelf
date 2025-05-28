@@ -1,5 +1,6 @@
 package controllers;
 
+import BaseDatosMongo.BaseDatosMongo;
 import BaseDatosOracle.BaseDatosOracle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class principal_librosController {
-    private BaseDatosOracle bd;
+    private BaseDatosOracle conexionOracle;
+    BaseDatosMongo conexionMongo;
     private List<Libro> todosLosLibros;
     private Usuario usuarioActual;
 
@@ -34,9 +36,11 @@ public class principal_librosController {
 
     @FXML
     public void initialize() {
-        bd = new BaseDatosOracle();
-        bd.conectar();
-        todosLosLibros = bd.obtener_libros();
+        conexionOracle = new BaseDatosOracle();
+        conexionOracle.conectar();
+
+        conexionMongo = new BaseDatosMongo();
+        todosLosLibros = conexionOracle.obtener_libros();
         mostrarLibros(todosLosLibros);
         
         busquedaField.textProperty().addListener((observable, oldValue, newValue) -> {
