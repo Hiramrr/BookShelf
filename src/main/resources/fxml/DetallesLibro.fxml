@@ -32,14 +32,14 @@
                         </Label>
                         <TableView fx:id="tablaDatos" layoutX="508.0" layoutY="336.0" prefHeight="253.0" prefWidth="230.0">
                           <columns>
-                            <TableColumn fx:id="columnaInfo" prefWidth="228.11111450195312" text="Informacion del libro" />
+                            <TableColumn fx:id="columnaInfo" editable="false" prefWidth="228.11111450195312" sortable="false" text="Informacion del libro" />
                           </columns>
                         </TableView>
                         <TableView fx:id="tablaReseñas" layoutX="13.0" layoutY="394.0" prefHeight="202.0" prefWidth="484.0">
                           <columns>
-                            <TableColumn fx:id="UsuarioReseña" prefWidth="75.0" text="Usuario" />
-                            <TableColumn fx:id="EstrellasReseña" prefWidth="108.50000762939453" text="Estrellas" />
-                            <TableColumn fx:id="ReseñaTexto" prefWidth="287.9999694824219" text="Reseña" />
+                            <TableColumn fx:id="UsuarioReseña" editable="false" prefWidth="75.0" sortable="false" text="Usuario" />
+                            <TableColumn fx:id="EstrellasReseña" editable="false" prefWidth="108.50000762939453" sortable="false" text="Estrellas" />
+                            <TableColumn fx:id="ReseñaTexto" editable="false" prefWidth="287.9999694824219" sortable="false" text="Reseña" />
                           </columns>
                         </TableView>
                         <Label fx:id="cartaNombre1" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="295.0" prefHeight="20.0" prefWidth="155.0" styleClass="product-name" text="¿Quieres escribir una reseña?" textAlignment="CENTER">
