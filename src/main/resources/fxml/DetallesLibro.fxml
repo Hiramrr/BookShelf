@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="contenedor" prefHeight="613.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetallesLibroController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="762.0">
+         <children>
+            <ScrollPane prefHeight="614.0" prefWidth="760.0">
+               <content>
+                  <Pane prefHeight="609.0" prefWidth="785.0">
+                     <children>
+                        <Label fx:id="titulo" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="20.0" prefHeight="46.0" prefWidth="507.0" styleClass="product-name" text="Nombre del libro" textAlignment="CENTER">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sinopsis" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="14.0" layoutY="68.0" prefHeight="227.0" prefWidth="488.0" text="Sinopsis" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tablaDatos" layoutX="508.0" layoutY="336.0" prefHeight="253.0" prefWidth="230.0">
+                          <columns>
+                            <TableColumn fx:id="columnaInfo" prefWidth="228.11111450195312" text="Informacion del libro" />
+                          </columns>
+                        </TableView>
+                        <TableView layoutX="13.0" layoutY="394.0" prefHeight="202.0" prefWidth="484.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Usuario" />
+                            <TableColumn prefWidth="108.50000762939453" text="Estrellas" />
+                              <TableColumn prefWidth="287.9999694824219" text="Reseña" />
+                          </columns>
+                        </TableView>
+                        <Label fx:id="cartaNombre1" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="295.0" prefHeight="20.0" prefWidth="155.0" styleClass="product-name" text="¿Quieres escribir una reseña?" textAlignment="CENTER">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="cartaNombre11" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="337.0" prefHeight="20.0" prefWidth="60.0" styleClass="product-name" text="Estrellas:" textAlignment="CENTER">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="estrellas" layoutX="79.0" layoutY="335.0" prefHeight="26.0" prefWidth="56.0" />
+                        <Label fx:id="cartaNombre111" alignment="CENTER" contentDisplay="CENTER" layoutX="143.0" layoutY="338.0" prefHeight="20.0" prefWidth="60.0" styleClass="product-name" text="Reseña:" textAlignment="CENTER">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <TextArea layoutX="197.0" layoutY="334.0" prefHeight="47.0" prefWidth="302.0" />
+                        <Button layoutX="404.0" layoutY="302.0" minHeight="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Subir reseña" />
+                     </children>
+                  </Pane>
+               </content>
+            </ScrollPane>
+            <Pane layoutX="508.0" layoutY="55.0" prefHeight="277.0" prefWidth="229.0" styleClass="panel_imagen" stylesheets="@css/subir_libro_styles.css">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="277.0" fitWidth="229.0" pickOnBounds="true" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

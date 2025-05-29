@@ -19,11 +19,10 @@ public class CartaLibroController {
             Image imagenLibro = new Image(getClass().getResourceAsStream("/" + libro.getUrlImagen()));
             imagen.setImage(imagenLibro);
         } catch (Exception e) {
-            System.err.println("Error al cargar la imagen del libro: " + e.getMessage());
-            // Cargar imagen por defecto si hay error
             Image imagenDefault = new Image(getClass().getResourceAsStream("/images/libros/default.png"));
             imagen.setImage(imagenDefault);
         }
     }
+
 
 }

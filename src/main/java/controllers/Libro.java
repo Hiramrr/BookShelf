@@ -23,6 +23,8 @@ public class Libro {
         this.urlImagen = "images/libros/default.png";
     }
 
+    public Libro(){}
+
     public int getId() {
         return id;
     }

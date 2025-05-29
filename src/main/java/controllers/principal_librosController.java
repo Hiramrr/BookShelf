@@ -6,10 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,14 +97,19 @@ public class principal_librosController {
     }
 
     private void mostrarDetallesLibro(Libro libro) {
-        System.out.println(libro.getId());
-        System.out.println(libro.getTitulo());
-        System.out.println(libro.getAutor());
-        List<Categoria> categoria = new ArrayList<>(libro.getCategoria());
-        System.out.println(categoria.get(0).getNombre());
-        System.out.println(libro.getEditorial());
-        System.out.println(libro.getNum_copias());
-        System.out.println(libro.getSinopsis_());
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DetallesLibro.fxml"));
+            Parent pane = loader.load();
+            DetallesLibroController controller = loader.getController();
+            controller.setUsuario(usuarioActual);
+            controller.setLibro(libro);
+            Stage stage = new Stage();
+            stage.setTitle("BookShelf");
+            stage.setScene(new Scene(pane));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void mostrarMensajeError(String titulo, String mensaje) {

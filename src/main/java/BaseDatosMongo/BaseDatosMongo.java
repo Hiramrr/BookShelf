@@ -28,7 +28,7 @@ public class BaseDatosMongo {
             collection.insertOne(doc);
             return true;
         } catch (Exception e) {
-            System.err.println("Error al guardar imagen en MongoDB: " + e.getMessage());
+            System.err.println("Error al guardar imagen" + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -40,7 +40,7 @@ public class BaseDatosMongo {
             Document doc = collection.find(eq("id_libro", idLibro)).first();
             return doc != null ? doc.getString("url") : "images/libros/default.png";
         } catch (Exception e) {
-            System.err.println("Error al obtener URL de imagen: " + e.getMessage());
+            System.err.println("no tiene imagen xd" + e.getMessage());
             return "images/libros/default.png";
         }
     }
