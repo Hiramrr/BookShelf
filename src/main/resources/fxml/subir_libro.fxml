@@ -86,7 +86,7 @@
                         <Pane prefHeight="24.0" prefWidth="334.0" />
                         <TextField fx:id="cantidad" promptText="Cantidad" />
                         <Pane prefHeight="28.0" prefWidth="334.0" />
-                        <TextArea fx:id="sinopsis" prefHeight="69.0" prefWidth="334.0" promptText="Sinopsis" />
+                        <TextArea fx:id="sinopsis" prefHeight="69.0" prefWidth="334.0" promptText="Sinopsis" wrapText="true" />
                         <Pane prefHeight="18.0" prefWidth="334.0" />
                         <ComboBox fx:id="categoria2" prefHeight="26.0" prefWidth="336.0" promptText="Categoria" />
                         <Pane prefHeight="11.0" prefWidth="334.0" />

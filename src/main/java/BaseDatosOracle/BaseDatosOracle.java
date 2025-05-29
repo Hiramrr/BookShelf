@@ -140,4 +140,19 @@ public class BaseDatosOracle {
             return false;
         }
     }
+
+    public String obtenerNombreUsuario(int idUsuario) {
+        String query = "SELECT NOMBRE FROM USUARIOS WHERE ID = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, idUsuario);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("NOMBRE");
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener nombre de usuario: " + e.getMessage());
+        }
+        return null;
+    }
 }

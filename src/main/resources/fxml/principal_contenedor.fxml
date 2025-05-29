@@ -15,7 +15,7 @@
                   <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handlePrincipal" prefHeight="43.0" prefWidth="101.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Principal" />
                   <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleSubirLibro" prefHeight="43.0" prefWidth="118.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Subir libro" />
                   <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleEditarLibro" prefHeight="43.0" prefWidth="117.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Editar Libro" />
-                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleEliminarLibro" prefHeight="43.0" prefWidth="121.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Eliminar Libro" />
+                  <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleEliminarLibro" prefHeight="43.0" prefWidth="162.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Reseñas recientes" />
                   <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handleUsuarios" prefHeight="43.0" prefWidth="101.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Usuarios" />
                   <Button id="buttonOpciones" mnemonicParsing="false" onAction="#handlePrestamo" prefHeight="43.0" prefWidth="117.0" styleClass="Button" stylesheets="@css/contenedor_principal.css" text="Prestamos" />
                   <Pane prefHeight="46.0" prefWidth="49.0" />

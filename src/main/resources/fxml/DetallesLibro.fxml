@@ -18,7 +18,7 @@
          <children>
             <ScrollPane prefHeight="614.0" prefWidth="760.0">
                <content>
-                  <Pane prefHeight="609.0" prefWidth="785.0">
+                  <Pane prefHeight="609.0" prefWidth="761.0">
                      <children>
                         <Label fx:id="titulo" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="20.0" prefHeight="46.0" prefWidth="507.0" styleClass="product-name" text="Nombre del libro" textAlignment="CENTER">
                            <font>
@@ -35,11 +35,11 @@
                             <TableColumn fx:id="columnaInfo" prefWidth="228.11111450195312" text="Informacion del libro" />
                           </columns>
                         </TableView>
-                        <TableView layoutX="13.0" layoutY="394.0" prefHeight="202.0" prefWidth="484.0">
+                        <TableView fx:id="tablaReseñas" layoutX="13.0" layoutY="394.0" prefHeight="202.0" prefWidth="484.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Usuario" />
-                            <TableColumn prefWidth="108.50000762939453" text="Estrellas" />
-                              <TableColumn prefWidth="287.9999694824219" text="Reseña" />
+                            <TableColumn fx:id="UsuarioReseña" prefWidth="75.0" text="Usuario" />
+                            <TableColumn fx:id="EstrellasReseña" prefWidth="108.50000762939453" text="Estrellas" />
+                            <TableColumn fx:id="ReseñaTexto" prefWidth="287.9999694824219" text="Reseña" />
                           </columns>
                         </TableView>
                         <Label fx:id="cartaNombre1" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="295.0" prefHeight="20.0" prefWidth="155.0" styleClass="product-name" text="¿Quieres escribir una reseña?" textAlignment="CENTER">
@@ -58,8 +58,9 @@
                               <Font size="12.0" />
                            </font>
                         </Label>
-                        <TextArea layoutX="197.0" layoutY="334.0" prefHeight="47.0" prefWidth="302.0" />
-                        <Button layoutX="404.0" layoutY="302.0" minHeight="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Subir reseña" />
+                        <TextArea fx:id="reseñaField" layoutX="197.0" layoutY="334.0" prefHeight="47.0" prefWidth="302.0" wrapText="true" />
+                        <Button layoutX="404.0" layoutY="302.0" minHeight="25.0" mnemonicParsing="false" onAction="#handleSubirReseña" prefHeight="25.0" prefWidth="94.0" text="Subir reseña" wrapText="true" />
+                        <Button layoutX="14.0" layoutY="8.0" minHeight="25.0" mnemonicParsing="false" onAction="#handleRegresar" prefHeight="25.0" prefWidth="94.0" text="&lt;- Regresar" wrapText="true" />
                      </children>
                   </Pane>
                </content>

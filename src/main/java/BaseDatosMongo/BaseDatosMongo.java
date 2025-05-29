@@ -4,8 +4,12 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.bson.Document;
 import static com.mongodb.client.model.Filters.eq;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseDatosMongo {
 
@@ -42,6 +46,30 @@ public class BaseDatosMongo {
         } catch (Exception e) {
             System.err.println("no tiene imagen xd" + e.getMessage());
             return "images/libros/default.png";
+        }
+    }
+
+    public boolean guardarReseña(String coleccion, int id_usuario,int id_libro, String estrellas, String reseña) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            Document doc = new Document("Estrellas", estrellas).append("Reseña", reseña).append("id_usuario", id_usuario).append("id_libro", id_libro);
+            collection.insertOne(doc);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al guardar reseña" + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public ObservableList<Document> obtenerReseñas(String coleccion, int idLibro) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            List<Document> listaReseñas = collection.find(eq("id_libro", idLibro)).into(new ArrayList<>());
+            return FXCollections.observableArrayList(listaReseñas);
+        } catch (Exception e) {
+            System.err.println("Error al obtener reseñas: " + e.getMessage());
+            return FXCollections.observableArrayList();
         }
     }
 

@@ -2,6 +2,7 @@ package controllers;
 
 import BaseDatosMongo.BaseDatosMongo;
 import BaseDatosOracle.BaseDatosOracle;
+import controllers.DetallesLibroController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
