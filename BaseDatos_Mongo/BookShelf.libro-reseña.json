@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "6837e2b02592673ac879cd27"
+  },
+  "Estrellas": "5★",
+  "Reseña": "Es un libro muy increible",
+  "id_usuario": 41644,
+  "id_libro": 21321
+},
+{
+  "_id": {
+    "$oid": "6837e9014f50cc68a72b822d"
+  },
+  "Estrellas": "5★",
+  "Reseña": "Muy buen libro le gusto a mi novia",
+  "id_usuario": 41644,
+  "id_libro": 6075509
+},
+{
+  "_id": {
+    "$oid": "6837e91793c8c33f1ed236d7"
+  },
+  "Estrellas": "5★",
+  "Reseña": "hola",
+  "id_usuario": 55580,
+  "id_libro": 21321
+},
+{
+  "_id": {
+    "$oid": "683876a6dc3e69418535e3dd"
+  },
+  "Estrellas": "5★",
+  "Reseña": "esta muy epico",
+  "id_usuario": 41644,
+  "id_libro": 21321312
+},
+{
+  "_id": {
+    "$oid": "6838b619e701f830ce07a0c4"
+  },
+  "Estrellas": "5★",
+  "Reseña": "Viva el romance ",
+  "id_usuario": 34480,
+  "id_libro": 6075509
+}]

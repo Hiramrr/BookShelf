@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="550.0" styleClass="product-card" stylesheets="@css/CartaReseña_styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controllers.CartaReseñaController">
+   <children>
+      <Pane prefHeight="220.0" prefWidth="158.0">
+         <children>
+            <Label fx:id="cartaNombreLibro" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="171.0" prefHeight="49.0" prefWidth="160.0" styleClass="product-name" text="Nombre del libro" textAlignment="CENTER" wrapText="true" />
+            <Pane layoutX="20.0" layoutY="20.0" prefHeight="143.0" prefWidth="122.0">
+               <children>
+                  <ImageView fx:id="imagen" fitHeight="143.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane prefHeight="220.0" prefWidth="94.0">
+         <children>
+            <Label fx:id="CartaUsuario" alignment="CENTER" contentDisplay="CENTER" layoutY="-1.0" prefHeight="221.0" prefWidth="94.0" styleClass="product-name" text="Usuario" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </Pane>
+      <Pane prefHeight="220.0" prefWidth="72.0">
+         <children>
+            <Label fx:id="CartaEstrellas" alignment="CENTER" contentDisplay="CENTER" prefHeight="221.0" prefWidth="73.0" styleClass="product-name" text="Estrellas" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </Pane>
+      <Pane prefHeight="220.0" prefWidth="228.0">
+         <children>
+            <Label fx:id="cartaReseña" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" prefHeight="220.0" prefWidth="231.0" styleClass="product-name" text="Reseña" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </Pane>
+   </children>
+</HBox>
