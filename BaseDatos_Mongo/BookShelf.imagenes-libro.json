@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "68365953a8e5aa5f2c3da88d"
+  },
+  "url": "images/libros/libro_324432.jpg",
+  "id_libro": 324432
+},
+{
+  "_id": {
+    "$oid": "68366176db8b3f5d86c46054"
+  },
+  "url": "images/libros/libro_6075509.jpeg",
+  "id_libro": 6075509
+},
+{
+  "_id": {
+    "$oid": "68366d082285d433ef8033fa"
+  },
+  "url": "images/libros/libro_3165267.jpeg",
+  "id_libro": 3165267
+},
+{
+  "_id": {
+    "$oid": "68370e97e28fe8174752f884"
+  },
+  "url": "images/libros/libro_312564.jpg",
+  "id_libro": 312564
+},
+{
+  "_id": {
+    "$oid": "683744708d555e1a1808c973"
+  },
+  "url": "images/libros/libro_21321.jpg",
+  "id_libro": 21321
+},
+{
+  "_id": {
+    "$oid": "68387682dc3e69418535e3d9"
+  },
+  "url": "images/libros/libro_21321312.jpeg",
+  "id_libro": 21321312
+},
+{
+  "_id": {
+    "$oid": "683876dddc3e69418535e3e0"
+  },
+  "url": "images/libros/libro_1232.jpeg",
+  "id_libro": 1232
+},
+{
+  "_id": {
+    "$oid": "6838b5a49cd5e20498072544"
+  },
+  "url": "images/libros/libro_432432.jpg",
+  "id_libro": 432432
+}]
