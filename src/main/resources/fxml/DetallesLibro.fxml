@@ -39,7 +39,7 @@
                           <columns>
                             <TableColumn fx:id="UsuarioReseña" editable="false" prefWidth="75.0" sortable="false" text="Usuario" />
                             <TableColumn fx:id="EstrellasReseña" editable="false" prefWidth="108.50000762939453" sortable="false" text="Estrellas" />
-                            <TableColumn fx:id="ReseñaTexto" editable="false" prefWidth="287.9999694824219" sortable="false" text="Reseña" />
+                            <TableColumn fx:id="ReseñaTexto" editable="false" prefWidth="299.0" sortable="false" text="Reseña" />
                           </columns>
                         </TableView>
                         <Label fx:id="cartaNombre1" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="295.0" prefHeight="20.0" prefWidth="155.0" styleClass="product-name" text="¿Quieres escribir una reseña?" textAlignment="CENTER">

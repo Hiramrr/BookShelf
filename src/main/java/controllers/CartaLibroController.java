@@ -23,6 +23,4 @@ public class CartaLibroController {
             imagen.setImage(imagenDefault);
         }
     }
-
-
 }

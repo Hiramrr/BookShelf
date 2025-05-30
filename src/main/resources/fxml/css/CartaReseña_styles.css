@@ -5,7 +5,6 @@
     -fx-border-color: #dddddd;
     -fx-border-radius: 10;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
-    -fx-pref-width: 150;
     -fx-margin: 10;
 }
 
@@ -19,9 +18,4 @@
     -fx-font-weight: bold;
     -fx-text-alignment: center;
     -fx-wrap-text: true;
-}
-
-.product-price {
-    -fx-text-fill: #444444;
-    -fx-font-size: 14px;
 }

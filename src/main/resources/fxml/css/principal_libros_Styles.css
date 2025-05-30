@@ -154,3 +154,12 @@ Region {
     -fx-min-height: 0;
 }
 
+/* ---------- VBox del carrito ---------- */
+#Hbox {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 6;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0, 0, 2);
+}

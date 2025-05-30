@@ -62,13 +62,21 @@ public class PrincipalContenedorController {
     }
 
     @FXML
-    void handleEliminarLibro(ActionEvent event) {
-
+    void handleReseñasRecientes(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReseñasRecientes.fxml"));
+            Parent root = loader.load();
+            ReseñasRecientesController controller = loader.getController();
+            controller.setUsuario(usuarioActual);
+            contenedor.getChildren().clear();
+            contenedor.getChildren().add(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void handlePrestamo(ActionEvent event) {
-
     }
 
     @FXML

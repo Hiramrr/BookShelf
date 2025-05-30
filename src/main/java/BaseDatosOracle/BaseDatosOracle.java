@@ -155,4 +155,40 @@ public class BaseDatosOracle {
         }
         return null;
     }
+
+    public Libro obtenerLibroPorId(int idLibro) {
+        String query = "SELECT * FROM TodosLibros WHERE ID = ?";
+        if (conexionMongo == null) {
+            conexionMongo = new BaseDatosMongo();
+        }
+
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, idLibro);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    List<Categoria> categorias = new ArrayList<>();
+                    int ID = rs.getInt("ID");
+                    String TITULO = rs.getString("TITULO");
+                    String AUTOR = rs.getString("AUTOR");
+                    String EDITORIAL = rs.getString("EDITORIAL");
+                    int NUM_COPIAS = rs.getInt("NUM_COPIAS");
+                    String SINOPSIS = rs.getString("SINOPSIS");
+                    String TEMP = rs.getString("CATEGORIAS");
+                    String[] categoriasArray = TEMP.split(",");
+                    categorias.clear();
+                    for (String categoria : categoriasArray) {
+                        categorias.add(new Categoria(categoria.trim()));
+                    }
+
+                    Libro libro = new Libro(ID, TITULO, AUTOR, EDITORIAL, NUM_COPIAS, SINOPSIS, categorias);
+                    String urlImagen = conexionMongo.obtenerUrlImagen("imagenes-libro", ID);
+                    libro.setUrlImagen(urlImagen);
+                    return libro;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

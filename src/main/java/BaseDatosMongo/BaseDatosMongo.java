@@ -8,7 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.bson.Document;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Sorts.descending;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BaseDatosMongo {
@@ -66,6 +68,17 @@ public class BaseDatosMongo {
         try {
             MongoCollection<Document> collection = database.getCollection(coleccion);
             List<Document> listaReseñas = collection.find(eq("id_libro", idLibro)).into(new ArrayList<>());
+            return FXCollections.observableArrayList(listaReseñas);
+        } catch (Exception e) {
+            System.err.println("Error al obtener reseñas: " + e.getMessage());
+            return FXCollections.observableArrayList();
+        }
+    }
+
+   public ObservableList<Document> obtenerReseñasRecientes(String coleccion) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            List<Document> listaReseñas = collection.find().sort(descending("_id")).into(new ArrayList<>());
             return FXCollections.observableArrayList(listaReseñas);
         } catch (Exception e) {
             System.err.println("Error al obtener reseñas: " + e.getMessage());
