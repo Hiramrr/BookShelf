@@ -66,6 +66,7 @@ public class PrincipalContenedorController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ReseñasRecientes.fxml"));
             Parent root = loader.load();
+            System.out.println();
             ReseñasRecientesController controller = loader.getController();
             controller.setUsuario(usuarioActual);
             contenedor.getChildren().clear();
