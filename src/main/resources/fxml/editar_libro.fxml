@@ -75,11 +75,11 @@
                <children>
                   <VBox prefHeight="515.0" prefWidth="334.0">
                      <children>
-                        <ComboBox fx:id="categorias1" prefHeight="26.0" prefWidth="336.0" promptText="Libro a editar" />
+                        <ComboBox fx:id="libro" prefHeight="26.0" prefWidth="336.0" promptText="Libro a editar" />
                         <Pane prefHeight="29.0" prefWidth="334.0" />
                         <TextField fx:id="nombre" promptText="Nombre" />
                         <Pane prefHeight="27.0" prefWidth="334.0" />
-                        <TextField fx:id="id" promptText="ISBN" />
+                        <TextField fx:id="id" editable="false" promptText="ISBN" />
                         <Pane prefHeight="27.0" prefWidth="334.0" />
                         <TextField fx:id="autor" promptText="Autor" />
                         <Pane prefHeight="24.0" prefWidth="334.0" />

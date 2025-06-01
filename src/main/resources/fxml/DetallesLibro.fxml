@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="contenedor" prefHeight="613.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetallesLibroController">
+<Pane fx:id="contenedor" prefHeight="653.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetallesLibroController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="762.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="762.0">
          <children>
-            <ScrollPane prefHeight="614.0" prefWidth="760.0">
+            <ScrollPane prefHeight="653.0" prefWidth="760.0">
                <content>
-                  <Pane prefHeight="609.0" prefWidth="761.0">
+                  <Pane prefHeight="652.0" prefWidth="761.0">
                      <children>
                         <Label fx:id="titulo" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="20.0" prefHeight="46.0" prefWidth="507.0" styleClass="product-name" text="Nombre del libro" textAlignment="CENTER">
                            <font>

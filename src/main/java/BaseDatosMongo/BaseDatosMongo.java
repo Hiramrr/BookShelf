@@ -40,6 +40,18 @@ public class BaseDatosMongo {
         }
     }
 
+    public boolean editarrDireccionImagen(String coleccion, String url, int id) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            collection.updateOne(eq("id_libro", id), new Document("$set", new Document("url", url)));
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al guardar imagen" + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public String obtenerUrlImagen(String coleccion, int idLibro) {
         try {
             MongoCollection<Document> collection = database.getCollection(coleccion);

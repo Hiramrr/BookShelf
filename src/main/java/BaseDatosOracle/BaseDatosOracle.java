@@ -191,4 +191,38 @@ public class BaseDatosOracle {
         }
         return null;
     }
+
+    public boolean editarLibro(int id, String titulo, String autor, String editorial, int numCopias, String sinopsis, String categoriaAntigua, String categoriaNueva) {
+        String queryLibro = "UPDATE Libros SET TITULO = ?, AUTOR = ?, EDITORIAL = ?, NUM_COPIAS = ?, SINOPSIS = ? WHERE ID = ?";
+        
+        String queryCategoria = "UPDATE TABLE (SELECT CATEGORIAS FROM Libros WHERE ID = ?) c SET c.COLUMN_VALUE = ? WHERE c.COLUMN_VALUE = ?";
+
+        try {
+            try (PreparedStatement stmtLibro = con.prepareStatement(queryLibro)) {
+                stmtLibro.setString(1, titulo);
+                stmtLibro.setString(2, autor);
+                stmtLibro.setString(3, editorial);
+                stmtLibro.setInt(4, numCopias);
+                stmtLibro.setString(5, sinopsis);
+                stmtLibro.setInt(6, id);
+                stmtLibro.executeUpdate();
+            }
+
+            if (categoriaAntigua != null && categoriaNueva != null && !categoriaAntigua.isEmpty() && !categoriaNueva.isEmpty()) {
+                try (PreparedStatement stmtCategoria = con.prepareStatement(queryCategoria)) {
+                    stmtCategoria.setInt(1, id);
+                    stmtCategoria.setString(2, categoriaNueva);
+                    stmtCategoria.setString(3, categoriaAntigua);
+                    stmtCategoria.executeUpdate();
+                }
+            }
+
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar el libro: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

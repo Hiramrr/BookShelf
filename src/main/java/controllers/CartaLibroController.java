@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class CartaLibroController {
 
@@ -16,11 +19,31 @@ public class CartaLibroController {
         cartaAutor.setText(libro.getAutor());
         
         try {
-            Image imagenLibro = new Image(getClass().getResourceAsStream("/" + libro.getUrlImagen()));
-            imagen.setImage(imagenLibro);
+            InputStream inputStream = getClass().getResourceAsStream("/" + libro.getUrlImagen());
+            
+            if (inputStream == null) {
+                File srcFile = new File("src/main/resources/" + libro.getUrlImagen());
+                if (srcFile.exists()) {
+                    inputStream = new FileInputStream(srcFile);
+                }
+            }
+            
+            if (inputStream != null) {
+                Image imagenLibro = new Image(inputStream);
+                imagen.setImage(imagenLibro);
+                inputStream.close();
+            } else {
+                Image imagenDefault = new Image(getClass().getResourceAsStream("/images/libros/default.png"));
+                imagen.setImage(imagenDefault);
+            }
         } catch (Exception e) {
-            Image imagenDefault = new Image(getClass().getResourceAsStream("/images/libros/default.png"));
-            imagen.setImage(imagenDefault);
+            System.err.println("Error al cargar la imagen del libro: " + e.getMessage());
+            try {
+                Image imagenDefault = new Image(getClass().getResourceAsStream("/images/libros/default.png"));
+                imagen.setImage(imagenDefault);
+            } catch (Exception ex) {
+                System.err.println("Error al cargar imagen por defecto: " + ex.getMessage());
+            }
         }
     }
 }
