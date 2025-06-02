@@ -225,4 +225,16 @@ public class BaseDatosOracle {
         }
     }
 
+    public boolean editarNombreUsuario(int id, String nombre) {
+        String query = "UPDATE USUARIOS SET NOMBRE = ? WHERE ID = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, nombre);
+            stmt.setInt(2, id);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar el nombre de usuario: " + e.getMessage());
+            return false;
+        }
+    }
+
 }

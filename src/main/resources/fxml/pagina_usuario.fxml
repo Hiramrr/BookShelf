@@ -10,52 +10,53 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="contenedor" prefHeight="541.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User_Controller">
+<Pane fx:id="contenedor" prefHeight="657.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User_Controller">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="737.0" stylesheets="@css/principal_libros_Styles.css">
-         <children>
-            <VBox prefHeight="540.0" prefWidth="744.0">
+      <ScrollPane prefHeight="541.0" prefWidth="738.0">
+         <content>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="737.0" stylesheets="@css/principal_libros_Styles.css">
                <children>
-                  <Pane prefHeight="20.0" prefWidth="744.0" />
-                  <Text fx:id="nombreUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del usuario" textAlignment="CENTER" wrappingWidth="743.0876022078252">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sobre mi" textAlignment="CENTER" wrappingWidth="187.08760220782517">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="aboutme" prefHeight="108.0" prefWidth="739.0" text="Aqui puedes escribir algo sobre ti" textAlignment="CENTER" wrapText="true" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reseñas" textAlignment="CENTER" wrappingWidth="187.08760220782517">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <ScrollPane prefHeight="210.0" prefWidth="721.0">
-                     <content>
-                        <FlowPane fx:id="flowPaneReseñas" prefHeight="171.0" prefWidth="732.0" stylesheets="@css/principal_libros_Styles.css" />
-                     </content>
-                  </ScrollPane>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prestamos" textAlignment="CENTER" wrappingWidth="187.08760220782517">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <ScrollPane prefHeight="180.0" prefWidth="744.0">
-                     <content>
-                        <FlowPane fx:id="flowPanePrestamo" prefHeight="141.0" prefWidth="729.0" stylesheets="@css/principal_libros_Styles.css" />
-                     </content>
-                  </ScrollPane>
-                  <Pane prefHeight="71.0" prefWidth="744.0">
+                  <VBox prefHeight="657.0" prefWidth="744.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleCerrarSesion" prefHeight="40.0" prefWidth="126.0" text="Cerrar Sesion" />
-                        <Button layoutX="613.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleEditarPerfil" prefHeight="40.0" prefWidth="126.0" styleClass="buttonEditar" stylesheets="@css/principal_libros_Styles.css" text="Editar Perfil" />
-                     </children></Pane>
+                        <Pane prefHeight="20.0" prefWidth="744.0" />
+                        <Text fx:id="nombreUser" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del usuario" textAlignment="CENTER" wrappingWidth="743.0876022078252">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sobre mi" textAlignment="CENTER" wrappingWidth="187.08760220782517">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="aboutme" prefHeight="108.0" prefWidth="739.0" text="Aqui puedes escribir algo sobre ti" textAlignment="CENTER" wrapText="true" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reseñas" textAlignment="CENTER" wrappingWidth="187.08760220782517">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <ScrollPane prefHeight="210.0" prefWidth="721.0">
+                           <content>
+                              <FlowPane fx:id="flowPaneReseñas" prefHeight="188.0" prefWidth="732.0" stylesheets="@css/principal_libros_Styles.css" />
+                           </content>
+                        </ScrollPane>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Libro Favorito" textAlignment="CENTER" wrappingWidth="187.08760220782517">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <FlowPane fx:id="flowPaneLibro" prefHeight="171.0" prefWidth="729.0" stylesheets="@css/principal_libros_Styles.css" />
+                        <Pane prefHeight="85.0" prefWidth="744.0">
+                           <children>
+                              <Button layoutY="14.0" mnemonicParsing="false" onAction="#handleCerrarSesion" prefHeight="40.0" prefWidth="126.0" text="Cerrar Sesion" />
+                              <Button layoutX="611.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleEditarPerfil" prefHeight="40.0" prefWidth="126.0" styleClass="buttonEditar" stylesheets="@css/principal_libros_Styles.css" text="Editar Perfil" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-         </children>
-      </AnchorPane>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </children>
 </Pane>

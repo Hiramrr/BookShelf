@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
@@ -59,7 +59,7 @@
       </Pane>
       <Pane prefHeight="23.0" prefWidth="600.0">
          <children>
-            <ChoiceBox fx:id="libroFavorito" layoutX="33.0" layoutY="-1.0" prefHeight="26.0" prefWidth="254.0" />
+            <ComboBox fx:id="libroFavorito" layoutX="29.0" layoutY="-1.0" prefHeight="26.0" prefWidth="298.0" />
          </children>
       </Pane>
       <Pane prefHeight="49.0" prefWidth="600.0">

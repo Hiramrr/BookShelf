@@ -98,16 +98,46 @@ public class BaseDatosMongo {
         }
     }
 
-    public boolean guardarAboutMe(String coleccion, String aboutMe, int id) {
+    public ObservableList<Document> obtenerReseñaUser(String coleccion, int id_user) {
         try {
             MongoCollection<Document> collection = database.getCollection(coleccion);
-            Document doc = new Document("aboutMe", aboutMe).append("id_user", id);
-            collection.insertOne(doc);
+            List<Document> listaReseñas = collection.find(eq("id_usuario", id_user)).into(new ArrayList<>());
+            return FXCollections.observableArrayList(listaReseñas);
+        } catch (Exception e) {
+            System.err.println("Error al obtener reseñas: " + e.getMessage());
+            return FXCollections.observableArrayList();
+        }
+    }
+
+    public boolean guardarAboutMe(String coleccion, String aboutMe, String libro, int id_user, int id_libro) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            
+            Document existente = collection.find(eq("id_user", id_user)).first();
+            
+            if (existente != null) {
+                collection.updateOne(eq("id_user", id_user), new Document("$set", new Document("aboutMe", aboutMe).append("libro_favorito", libro).append("id_libro", id_libro)));
+            } else {
+                Document doc = new Document("aboutMe", aboutMe).append("libro_favorito", libro).append("id_user", id_user).append("id_libro", id_libro);
+                collection.insertOne(doc);
+            }
             return true;
         } catch (Exception e) {
-            System.err.println("Error al guardar" + e.getMessage());
+            System.err.println("Error al guardar informacion noooo: " + e.getMessage());
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public Document obtenerAboutMe(String coleccion, int id_user) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            Document doc = collection.find(eq("id_user", id_user)).first();
+            return doc;
+        } catch (Exception e) {
+            System.err.println("Error al obtener informacion del usuario: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
 

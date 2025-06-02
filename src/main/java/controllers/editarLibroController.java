@@ -106,16 +106,7 @@ public class editarLibroController {
                 categoriaNuevaStr = categoriaNueva.getText().trim();
             }
 
-            boolean exitoOracle = conexionOracle.editarLibro(
-                libroId,
-                nombre.getText(),
-                autor.getText(),
-                editorial.getText(),
-                numCopias,
-                sinopsis.getText(),
-                categoriaAntiguaStr,
-                categoriaNuevaStr
-            );
+            boolean exitoOracle = conexionOracle.editarLibro(libroId, nombre.getText(), autor.getText(), editorial.getText(), numCopias, sinopsis.getText(), categoriaAntiguaStr, categoriaNuevaStr);
 
             if (exitoOracle) {
                 mostrarAlerta("Éxito", "Libro actualizado correctamente", Alert.AlertType.INFORMATION);
@@ -254,5 +245,4 @@ public class editarLibroController {
             e.printStackTrace();
         }
     }
-
 }
