@@ -128,10 +128,10 @@
 }
 
 .button {
-    -fx-background-color: transparent;
+    -fx-background-color: #c90013;
     -fx-border-radius: 3;
     -fx-font-size: 16px;
-    -fx-text-fill: #dc3545;
+    -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-padding: 5 5;
     -fx-min-width: 40px;
@@ -139,7 +139,11 @@
 }
 
 .button:hover {
-    -fx-background-color: #f8d7da;
+    -fx-background-color: #8d0810;
+}
+
+.button:pressed {
+    -fx-background-color: #3f0003;
 }
 
 Region {
@@ -152,6 +156,21 @@ Region {
     -fx-max-height: 0;
     -fx-min-width: 0;
     -fx-min-height: 0;
+}
+
+.buttonEditar {
+    -fx-background-color: #004a8d;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.buttonEditar:hover {
+    -fx-background-color: #003a75;
+}
+
+.buttonEditar:pressed {
+    -fx-background-color: #002f5e;
 }
 
 /* ---------- VBox del carrito ---------- */

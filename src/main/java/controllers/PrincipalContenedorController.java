@@ -44,7 +44,16 @@ public class PrincipalContenedorController {
 
     @FXML
     void handleCuenta(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pagina_usuario.fxml"));
+            Parent root = loader.load();
+            User_Controller controller = loader.getController();
+            controller.setUsuario(usuarioActual);
+            contenedor.getChildren().clear();
+            contenedor.getChildren().add(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

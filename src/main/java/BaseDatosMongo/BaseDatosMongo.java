@@ -98,6 +98,19 @@ public class BaseDatosMongo {
         }
     }
 
+    public boolean guardarAboutMe(String coleccion, String aboutMe, int id) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            Document doc = new Document("aboutMe", aboutMe).append("id_user", id);
+            collection.insertOne(doc);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al guardar" + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public void cerrarConexion() {
         if (client != null) {
             try {
