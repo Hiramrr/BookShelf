@@ -53,4 +53,11 @@
   },
   "url": "images/libros/libro_432432.jpg",
   "id_libro": 432432
+},
+{
+  "_id": {
+    "$oid": "683ba2ca68eafe12583d7644"
+  },
+  "url": "images/libros/libro_31232121.jpeg",
+  "id_libro": 31232121
 }]

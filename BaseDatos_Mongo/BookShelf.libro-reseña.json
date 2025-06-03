@@ -42,4 +42,13 @@
   "Reseña": "Viva el romance ",
   "id_usuario": 34480,
   "id_libro": 6075509
+},
+{
+  "_id": {
+    "$oid": "683da7dc5d37992117f78f4f"
+  },
+  "Estrellas": "5★",
+  "Reseña": "dさdさsd",
+  "id_usuario": 41644,
+  "id_libro": 1232
 }]

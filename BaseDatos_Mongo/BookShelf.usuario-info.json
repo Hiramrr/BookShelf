@@ -1,0 +1,9 @@
+[{
+  "_id": {
+    "$oid": "683e172cc18c792e610bb3be"
+  },
+  "aboutMe": "Soy un gato, soy una prueba de usuario de este proyecto",
+  "libro_favorito": "Punpun",
+  "id_user": 41644,
+  "id_libro": 31232121
+}]
