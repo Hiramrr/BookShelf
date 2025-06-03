@@ -2,8 +2,9 @@ CREATE TYPE Usuario_t AS OBJECT (id int,nombre VARCHAR(50), correo VARCHAR(100),
 CREATE TYPE Libro_t AS OBJECT (id int, titulo VARCHAR(80), autor VARCHAR(50),editorial varchar(50), num_copias int, sinopsis varchar(1000),categorias Categoria_tab_t);
 CREATE TYPE Reseña_t AS OBJECT (id int, texto varchar(1000), calificacion int , fecha date, usuario REF Usuario_t,libro REF Libro_t);
 CREATE TYPE Categoria_t AS OBJECT (nombre varchar(50));
-CREATE TYPE Prestamo_t AS OBJECT (id int, fecha_solicitud date, fecha_recogida date, estado varchar(50), usuario REF Usuario_t, libro REF Libro_t);
+CREATE TYPE Prestamo_t AS OBJECT (id int, fecha_solicitud date, fecha_devolucion date, estado int, id_usuario int, id_libro int);
 
+CREATE TABLE Prestamos OF Prestamo_t;
 
 CREATE TYPE Categoria_tab_t AS TABLE OF Categoria_t;
 
@@ -20,6 +21,9 @@ CREATE TABLE Reseñas OF Reseña_t;
 
 CREATE TABLE Prestamos OF Prestamo_t;
 
+
+DROP TABLE PRESTAMOS;
+DROP TYPE PRESTAMO_t;
 
 
 INSERT INTO Usuarios VALUES (Usuario_t(1, 'Miyu Maldonado', 'miyu@gmail.com', 'contra123'));

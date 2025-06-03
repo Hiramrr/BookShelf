@@ -87,6 +87,16 @@ public class PrincipalContenedorController {
 
     @FXML
     void handlePrestamo(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Prestamo.fxml"));
+            Parent root = loader.load();
+            PrestamoController controller = loader.getController();
+            controller.setUsuario(usuarioActual);
+            contenedor.getChildren().clear();
+            contenedor.getChildren().add(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
