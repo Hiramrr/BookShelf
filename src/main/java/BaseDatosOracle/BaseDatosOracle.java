@@ -303,16 +303,15 @@ public class BaseDatosOracle {
         return false;
     }
 
-    public boolean actualizarFecha(int idPrestamo, Date fecha_nueva){
-        String query = "UPDATE PRESTAMOS SET FECHA_DEVOLUCION = ? WHERE ID = ?";
-        try (PreparedStatement statement = con.prepareStatement(query)) {
-            statement.setDate(1,fecha_nueva);
-            statement.setInt(2, idPrestamo);
-            int rowsAffected = statement.executeUpdate();
-            return rowsAffected > 0;
+    public boolean sumarLibro(int id_libro){
+        String query = "UPDATE LIBROS SET NUM_COPIAS = NUM_COPIAS + 1 WHERE ID = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, id_libro);
+            return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.out.println("Algo salio mal nooo");
+            System.err.println("Error al actualizar la cantidad del libro: " + e.getMessage());
+            return false;
         }
-        return false;
     }
+
 }

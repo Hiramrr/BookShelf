@@ -106,6 +106,7 @@ public class EstadoPrestamosController {
             }
 
             if (conexionOracle.entregarPrestamo(id)) {
+                conexionOracle.sumarLibro(id);
                 mensajeBueno("Éxito", "El préstamo ha sido marcado como entregado");
                 cargarPrestamos();
                 idPrestamo.clear();
