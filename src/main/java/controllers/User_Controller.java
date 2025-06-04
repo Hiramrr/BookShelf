@@ -51,6 +51,7 @@ public class User_Controller {
 
     public void setUsuario(Usuario usuario) {
         this.usuarioActual = usuario;
+        nombreUser.setText("Perfil de " + usuarioActual.getNombre());
         cargarDetallesUsuario(usuarioActual.getId());
         btnCerrarSesion.setVisible(true);
         btnEditarPerfil.setVisible(true);
