@@ -45,10 +45,37 @@
 },
 {
   "_id": {
-    "$oid": "683da7dc5d37992117f78f4f"
+    "$oid": "683f28b23fb8283b5c2cda85"
   },
   "Estrellas": "5★",
-  "Reseña": "dさdさsd",
+  "Reseña": "Esta bueno",
   "id_usuario": 41644,
-  "id_libro": 1232
+  "id_libro": 31232121
+},
+{
+  "_id": {
+    "$oid": "683f505438b40868e824c57c"
+  },
+  "Estrellas": "5★",
+  "Reseña": "Esta increible",
+  "id_usuario": 41644,
+  "id_libro": 432804
+},
+{
+  "_id": {
+    "$oid": "683fcb361a62b35c7f03e6a5"
+  },
+  "Estrellas": "5★",
+  "Reseña": "Increible",
+  "id_usuario": 64745,
+  "id_libro": 978142158
+},
+{
+  "_id": {
+    "$oid": "683fcbb41a62b35c7f03e6e3"
+  },
+  "Estrellas": "5★",
+  "Reseña": "Tengo pesadillas con esto",
+  "id_usuario": 1,
+  "id_libro": 102
 }]
