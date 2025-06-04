@@ -232,4 +232,5 @@ public class subirLibroController {
         alert.setContentText(contenido);
         alert.showAndWait();
     }
+
 }
