@@ -91,7 +91,12 @@ public class editarLibroController {
             if (selectedImageFile != null) {
                 imagePath = guardarImagen(libroId);
                 if (imagePath != null) {
-                    conexionMongo.editarrDireccionImagen("imagenes-libro", imagePath, libroId);
+                    String urlActual = conexionMongo.obtenerUrlImagen("imagenes-libro", libroId);
+                    if (urlActual.equals("images/libros/default.png")) {
+                        conexionMongo.guardarDireccionImagen("imagenes-libro", imagePath, libroId);
+                    } else {
+                        conexionMongo.editarrDireccionImagen("imagenes-libro", imagePath, libroId);
+                    }
                 }
             }
 

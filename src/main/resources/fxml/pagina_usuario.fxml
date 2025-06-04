@@ -48,8 +48,8 @@
                         <FlowPane fx:id="flowPaneLibro" prefHeight="171.0" prefWidth="729.0" stylesheets="@css/principal_libros_Styles.css" />
                         <Pane prefHeight="85.0" prefWidth="744.0">
                            <children>
-                              <Button layoutY="14.0" mnemonicParsing="false" onAction="#handleCerrarSesion" prefHeight="40.0" prefWidth="126.0" text="Cerrar Sesion" />
-                              <Button layoutX="611.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleEditarPerfil" prefHeight="40.0" prefWidth="126.0" styleClass="buttonEditar" stylesheets="@css/principal_libros_Styles.css" text="Editar Perfil" />
+                              <Button fx:id="btnCerrarSesion" layoutY="14.0" mnemonicParsing="false" onAction="#handleCerrarSesion" prefHeight="40.0" prefWidth="126.0" text="Cerrar Sesion" />
+                              <Button fx:id="btnEditarPerfil" layoutX="611.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleEditarPerfil" prefHeight="40.0" prefWidth="126.0" styleClass="buttonEditar" stylesheets="@css/principal_libros_Styles.css" text="Editar Perfil" />
                            </children>
                         </Pane>
                      </children>

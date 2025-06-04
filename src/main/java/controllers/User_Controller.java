@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -38,13 +39,32 @@ public class User_Controller {
     @FXML
     private Label aboutme;
 
+    @FXML
+    private Button btnCerrarSesion;
+
+    @FXML
+    private Button btnEditarPerfil;
+
     private Usuario usuarioActual;
+    private Usuario usuarioVista;
     private Libro libroFavorito;
 
     public void setUsuario(Usuario usuario) {
         this.usuarioActual = usuario;
-        nombreUser.setText("Hola " + usuarioActual.getNombre() + "!");
-        cargarDetallesUsuario(usuarioActual.getId());
+        cargarDetallesUsuario(usuarioVista.getId());
+        btnCerrarSesion.setVisible(true);
+        btnEditarPerfil.setVisible(true);
+        cargarReseñasUser(usuarioVista.getId());
+    }
+
+    public void setUsuarioVista(Usuario usuarioActual, Usuario usuarioVista) {
+        this.usuarioActual = usuarioActual;
+        this.usuarioVista = usuarioVista;
+        nombreUser.setText("Perfil de " + usuarioVista.getNombre());
+        cargarDetallesUsuario(usuarioVista.getId());
+        btnCerrarSesion.setVisible(false);
+        btnEditarPerfil.setVisible(false);
+        cargarReseñasUser(usuarioVista.getId());
     }
 
     @FXML
@@ -62,7 +82,6 @@ public class User_Controller {
             libroFavorito = conexionOracle.obtenerLibroPorId(id_libro);
             mostrarFavorito(libroFavorito);
             aboutme.setText(doc_user.getString("aboutMe"));
-            cargarReseñasUser(id);
         } catch (Exception e) {
             System.out.println("No debo de hacer nada porque no tiene nada jaja");
         }

@@ -314,4 +314,23 @@ public class BaseDatosOracle {
         }
     }
 
+    public List<Usuario> obtenerTodosLosUsuarios() {
+        List<Usuario> usuarios = new ArrayList<>();
+        String query = "SELECT * FROM USUARIOS";
+        try (PreparedStatement statement = con.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                usuarios.add(new Usuario(
+                    resultSet.getInt("ID"),
+                    resultSet.getString("NOMBRE"),
+                    resultSet.getString("CORREO"),
+                    resultSet.getString("CONTRASEÑA")
+                ));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener usuarios: " + e.getMessage());
+        }
+        return usuarios;
+    }
+
 }

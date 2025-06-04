@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" styleClass="product-card" stylesheets="@css/CartaReseña_styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CartaUsuarioController">
+   <children>
+      <Pane prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="nombreUsuario" alignment="CENTER" contentDisplay="CENTER" layoutX="-9.0" layoutY="0.0" prefHeight="78.0" prefWidth="189.0" styleClass="product-name" text="Nombre del Usuario" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </Pane>
+   </children>
+</HBox>

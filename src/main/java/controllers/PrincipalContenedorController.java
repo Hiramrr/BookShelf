@@ -129,6 +129,15 @@ public class PrincipalContenedorController {
 
     @FXML
     void handleUsuarios(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ListaUsuarios.fxml"));
+            Parent root = loader.load();
+            ListaUsuariosController controller = loader.getController();
+            controller.setUsuario(usuarioActual);
+            contenedor.getChildren().clear();
+            contenedor.getChildren().add(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
