@@ -259,23 +259,21 @@ public class editarLibroController {
         }
 
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmacion.setTitle("Confirmar eliminación");
+        confirmacion.setTitle("Confirmar eliminacion");
         confirmacion.setHeaderText("¿Está seguro que desea eliminar este libro?");
-        confirmacion.setContentText("Esta acción eliminará el libro y todos sus datos relacionados (reseñas, imágenes, etc.) de forma permanente.");
+        confirmacion.setContentText("Esta accion eliminara el libro y todos sus datos relacionados (esperemos y esto funcione jaja)");
 
         if (confirmacion.showAndWait().get() == ButtonType.OK) {
             int libroId = Integer.parseInt(id.getText());
             
-            // Eliminar referencias en MongoDB
             conexionMongo.eliminarReseñasLibro("libro-reseña", libroId);
             conexionMongo.eliminarImagenLibro("imagenes-libro", libroId);
             conexionMongo.eliminarLibroFavorito("usuario-info", libroId);
             
-            // Eliminar libro de Oracle
             if (conexionOracle.eliminarLibro(libroId)) {
                 mostrarAlerta("Éxito", "Libro eliminado correctamente", Alert.AlertType.INFORMATION);
                 limpiarCampos();
-                cargarDatos(); // Recargar la lista de libros
+                cargarDatos();
             } else {
                 mostrarAlerta("Error", "No se pudo eliminar el libro", Alert.AlertType.ERROR);
             }
