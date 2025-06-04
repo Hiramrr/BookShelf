@@ -1,6 +1,5 @@
 CREATE TYPE Usuario_t AS OBJECT (id int,nombre VARCHAR(50), correo VARCHAR(100), contraseña varchar(70));
 CREATE TYPE Libro_t AS OBJECT (id int, titulo VARCHAR(80), autor VARCHAR(50),editorial varchar(50), num_copias int, sinopsis varchar(1000),categorias Categoria_tab_t);
-CREATE TYPE Reseña_t AS OBJECT (id int, texto varchar(1000), calificacion int , fecha date, usuario REF Usuario_t,libro REF Libro_t);
 CREATE TYPE Categoria_t AS OBJECT (nombre varchar(50));
 CREATE TYPE Prestamo_t AS OBJECT (id int, fecha_solicitud date, fecha_devolucion date, estado int, id_usuario int, id_libro int);
 
@@ -17,13 +16,13 @@ CREATE TABLE Libros OF Libro_t (
 )
 NESTED TABLE categorias STORE AS categorias_tabla;
 
-CREATE TABLE Reseñas OF Reseña_t;
-
 CREATE TABLE Prestamos OF Prestamo_t;
 
 
 DROP TABLE PRESTAMOS;
 DROP TYPE PRESTAMO_t;
+
+SELECT * FROM PRESTAMOS;
 
 
 INSERT INTO Usuarios VALUES (Usuario_t(1, 'Miyu Maldonado', 'miyu@gmail.com', 'contra123'));
@@ -53,35 +52,9 @@ INSERT INTO Libros VALUES (
   )
 );
 
-INSERT INTO Reseñas
-SELECT Reseña_t(
-  1001,
-  'Una obra maestra de la literatura',
-  5,
-  DATE '2024-06-01',
-  REF(u),
-  REF(l)
-)
-FROM Usuarios u, Libros l
-WHERE u.id = 1 AND l.id = 101;
-
-INSERT INTO Reseñas
-SELECT Reseña_t(
-  1002,
-  'Increible.',
-  4,
-  DATE '2024-07-10',
-  REF(u),
-  REF(l)
-)
-FROM Usuarios u, Libros l
-WHERE u.id = 2 AND l.id = 102;
-
-
 
 DROP TYPE Usuario_t;
 DROP TYPE Libro_t;
-DROP TYPE Reseña_t;
 DROP TYPE Prestamo_t;
 
 
@@ -108,25 +81,22 @@ SELECT r.id,
        DEREF(r.libro).titulo   AS libro_titulo
 FROM Reseñas r;
 
---Usuarios que subieron reseñas
-SELECT DISTINCT DEREF(r.usuario).nombre AS usuario
-FROM Reseñas r;
 
 --Prestamos faltan datos
 
 SELECT DEREF(p.usuario).nombre AS usuario,
        DEREF(p.libro).titulo AS libro,
        p.fecha_solicitud,
-       p.fecha_recogida,
+       p.fecha_devolucion,
        p.estado
 FROM Prestamos p
 WHERE DEREF(p.usuario).id = 2;
 
 SELECT DEREF(p.usuario).nombre AS usuario,
        DEREF(p.libro).titulo   AS libro,
-       p.fecha_recogida
+       p.fecha_devolucion
 FROM Prestamos p
-WHERE p.estado = 'Entregado';
+WHERE p.estado = 1 ;
 
 SELECT * FROM Usuarios;
 
@@ -147,3 +117,7 @@ DROP VIEW TodosLibros;
 SELECT DISTINCT c.nombre
 FROM Libros l,
 TABLE(l.categorias) c;
+
+SELECT * FROM USUARIOS;
+
+UPDATE USUARIOS SET CORREO = 'prueba@gmail.com' WHERE ID = 1;

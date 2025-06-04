@@ -6,4 +6,40 @@
   "libro_favorito": "Punpun",
   "id_user": 41644,
   "id_libro": 31232121
+},
+{
+  "_id": {
+    "$oid": "683fb28b3631e0221ea0486d"
+  },
+  "aboutMe": "Soy una gata de 10 años de edad, senior",
+  "libro_favorito": "Miyu el huerfanito",
+  "id_user": 64745,
+  "id_libro": 101
+},
+{
+  "_id": {
+    "$oid": "683fcb161a62b35c7f03e69a"
+  },
+  "aboutMe": "Estudiante de ingenieria ambiental, muy linda tambien",
+  "libro_favorito": "La hipótesis del amor",
+  "id_user": 34480,
+  "id_libro": 6075509
+},
+{
+  "_id": {
+    "$oid": "683fcb661a62b35c7f03e6b7"
+  },
+  "aboutMe": "Aqui puedes escribir algo sobre ti",
+  "libro_favorito": "Introduccion a base de datos",
+  "id_user": 55580,
+  "id_libro": 102
+},
+{
+  "_id": {
+    "$oid": "683fcbbf1a62b35c7f03e6e8"
+  },
+  "aboutMe": "Aqui puedes escribir algo sobre ti",
+  "libro_favorito": "Rastros de sangre",
+  "id_user": 1,
+  "id_libro": 432804
 }]

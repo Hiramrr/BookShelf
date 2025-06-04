@@ -1,0 +1,64 @@
+use BookShelf
+
+
+–Guardar la dirección de la imagen del libro
+db.<imagenes-libro>.insertOne({
+  url: "images/libros/libro_123.jpg",
+  id_libro: 123
+});
+
+–Actualizar la foto del libro si es que se cambia
+db.<imagenes-libro>.updateOne(
+  { id_libro: 123 },
+  { $set: { url: "images/libros/libro_123.png" } }
+);
+
+–Obtener la imagen del libro
+db.<imagenes-libro>.findOne({ id_libro: 123 });
+
+–Subir una reseña de un libro
+db.<libro-reseña>.insertOne({
+  Estrellas: "5",
+  Reseña: "Un libro para pensar.",
+  id_usuario: 1,
+  id_libro: 123
+});
+
+– Obtener reseña del libro
+db.<libro-reseña>.find({ id_libro: 123 });
+
+–Obtener las reseñas más recientes
+db.<libro-reseña>.find().sort({ _id: -1 });
+
+–Obtener reseñas por usuario
+db.<libro-reseña>.find({ id_usuario: 1 });
+
+–Obtener si el usuario tiene alguna descripción (esto es como en las redes sociales que luego pones como un aboutme)
+db.<usuario-info>.findOne({ id_user: 1 });
+
+–Añadir un about me a un usuario (por primera vez)
+db.<usuario-info>.insertOne({
+  aboutMe: "Me encantan los libros de ciencia ficción.",
+  libro_favorito: "Dune",
+  id_user: 1,
+  id_libro: 123
+});
+
+–Actualizar el about me del usuario (este solo se ejecutara en el programa si es que el usuario ya contaba con un about me)
+db.<usuario-info>.updateOne(
+  { id_user: 1 },
+  { $set: {
+      aboutMe: "Nuevo texto",
+      libro_favorito: "Nuevo libro",
+      id_libro: 456
+  }}
+);
+
+–Borra la imagen que esté relacionada con el libro
+db.<imagenes-libro>.deleteOne({ id_libro: 123 });
+
+– Borra todas las reseñas del libro con esa id
+db.<libro-reseña>.deleteMany({ id_libro: 123 });
+
+– Borra a todos los usuarios si libro favorito
+db.<usuario-info>.deleteMany({ id_libro: 123 });
