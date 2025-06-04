@@ -333,4 +333,15 @@ public class BaseDatosOracle {
         return usuarios;
     }
 
+    public boolean eliminarLibro(int idLibro) {
+        String query = "DELETE FROM Libros WHERE ID = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setInt(1, idLibro);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar el libro: " + e.getMessage());
+            return false;
+        }
+    }
+
 }

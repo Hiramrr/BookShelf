@@ -141,6 +141,39 @@ public class BaseDatosMongo {
         }
     }
 
+    public boolean eliminarImagenLibro(String coleccion, int idLibro) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            collection.deleteOne(eq("id_libro", idLibro));
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al eliminar imagen: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean eliminarReseñasLibro(String coleccion, int idLibro) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            collection.deleteMany(eq("id_libro", idLibro));
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al eliminar reseñas: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean eliminarLibroFavorito(String coleccion, int idLibro) {
+        try {
+            MongoCollection<Document> collection = database.getCollection(coleccion);
+            collection.deleteMany(eq("id_libro", idLibro));
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al eliminar libro favorito: " + e.getMessage());
+            return false;
+        }
+    }
+
     public void cerrarConexion() {
         if (client != null) {
             try {

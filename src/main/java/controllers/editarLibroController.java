@@ -250,4 +250,49 @@ public class editarLibroController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void handleEliminarLibro(ActionEvent event) {
+        if (id.getText().isEmpty()) {
+            mostrarAlerta("Error", "Debe seleccionar un libro para eliminar", Alert.AlertType.ERROR);
+            return;
+        }
+
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Confirmar eliminación");
+        confirmacion.setHeaderText("¿Está seguro que desea eliminar este libro?");
+        confirmacion.setContentText("Esta acción eliminará el libro y todos sus datos relacionados (reseñas, imágenes, etc.) de forma permanente.");
+
+        if (confirmacion.showAndWait().get() == ButtonType.OK) {
+            int libroId = Integer.parseInt(id.getText());
+            
+            // Eliminar referencias en MongoDB
+            conexionMongo.eliminarReseñasLibro("libro-reseña", libroId);
+            conexionMongo.eliminarImagenLibro("imagenes-libro", libroId);
+            conexionMongo.eliminarLibroFavorito("usuario-info", libroId);
+            
+            // Eliminar libro de Oracle
+            if (conexionOracle.eliminarLibro(libroId)) {
+                mostrarAlerta("Éxito", "Libro eliminado correctamente", Alert.AlertType.INFORMATION);
+                limpiarCampos();
+                cargarDatos(); // Recargar la lista de libros
+            } else {
+                mostrarAlerta("Error", "No se pudo eliminar el libro", Alert.AlertType.ERROR);
+            }
+        }
+    }
+
+    private void limpiarCampos() {
+        id.clear();
+        nombre.clear();
+        autor.clear();
+        editorial.clear();
+        cantidad.clear();
+        sinopsis.clear();
+        categoriaNueva.clear();
+        categorias.getSelectionModel().clearSelection();
+        libro.getSelectionModel().clearSelection();
+        imageView.setImage(null);
+        selectedImageFile = null;
+    }
 }

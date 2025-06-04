@@ -98,6 +98,7 @@
                </children>
             </Pane>
             <Button layoutX="537.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleEditarLibro" prefHeight="26.0" prefWidth="122.0" styleClass="buttonAgregar" stylesheets="@css/subir_libro_styles.css" text="Editar Libro" />
+            <Button layoutX="488.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleEliminarLibro" prefHeight="26.0" prefWidth="40.0" styleClass="buttonEliminar" stylesheets="@css/subir_libro_styles.css" text="X" />
             <Text layoutX="33.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libro:">
                <font>
                   <Font size="17.0" />
