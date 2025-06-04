@@ -51,10 +51,10 @@ public class User_Controller {
 
     public void setUsuario(Usuario usuario) {
         this.usuarioActual = usuario;
-        cargarDetallesUsuario(usuarioVista.getId());
+        cargarDetallesUsuario(usuarioActual.getId());
         btnCerrarSesion.setVisible(true);
         btnEditarPerfil.setVisible(true);
-        cargarReseñasUser(usuarioVista.getId());
+        cargarReseñasUser(usuarioActual.getId());
     }
 
     public void setUsuarioVista(Usuario usuarioActual, Usuario usuarioVista) {
